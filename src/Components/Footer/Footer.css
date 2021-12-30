@@ -1,0 +1,20 @@
+.footer{
+    display: flex;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    max-height: 400px;
+    min-width: 100px;
+    background-color: #232f3e;
+    z-index: 1;
+    color: white;
+    justify-content: space-evenly;
+}
+.categories{
+    display: flex;
+    flex-direction: column;
+}
+p{
+    font-weight: 200;
+    cursor: pointer;
+}
