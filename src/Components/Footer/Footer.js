@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import {Link} from 'react-router-dom';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -19,15 +20,15 @@ function Footer() {
             </div>
             <div className='categories'>
                 <h3>CATEGORIES</h3>
-                 <p>Men's Clothing</p>
-                 <p>Women's Clothing</p>
+                 <p><Link to="/MenClothing" id="jewelery__category">Men's Clothing</Link></p>
+                 <p><Link to="/womenClothing" id="jewelery__category">Women's Clothing</Link></p>
                  <p>Casual and Sports Shoes</p>
                  <p>T-Shirts and Casual Shirts</p>
                  <p>Laptops</p>
                  <p>Mobiles</p>
-                 <p>Mobile Accesories</p>
+                 <p><Link to="/Jewelery" id="jewelery__category">Jewelery</Link></p>
                  <p>Home Decor Items</p>
-                 <p>Electronics</p>
+                 <p><Link to="/Electronics" id="gadjet__category">Gadjets</Link></p>
             </div>
             <div className='contactUs'>
                <h3>CONNECT WITH US</h3>
