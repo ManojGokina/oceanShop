@@ -1,0 +1,31 @@
+#electronicsImage{
+    height:265px;
+    object-fit:contain;
+}
+.electronics__Items{
+    display:flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+#gadjets__card{
+    margin: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .5s ease;
+}
+#gadjets__card:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 13px 0px grey;
+}
+#favIcon:hover{
+   color:red;
+}
+#cartIcon:hover{
+    color: #00a4e7;
+}
+#electronics__title{
+    font-size:1rem;
+}

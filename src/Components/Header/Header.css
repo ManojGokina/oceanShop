@@ -43,6 +43,10 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+.header_option:hover{
+  color: rgb(194, 238, 241);
+  cursor: pointer;
+}
 .header_nav {
   display: flex;
   justify-content: space-evenly;
@@ -61,4 +65,26 @@
 .header_logo{
   display: flex;
   flex-direction: row;
+}
+.home__route{
+  text-decoration: none;
+}
+
+.checkout__route{
+  text-decoration: none;
+  color:white
+}
+#category__button{
+  color: white;
+  font-size: 13px;
+    font-weight: 800;
+    margin-top: -7px;
+    margin-left: -8px;
+}
+#category__button:hover{
+  color: rgb(194, 238, 241);
+}
+#dropDowm{
+  text-decoration: none;
+  color: black;
 }
