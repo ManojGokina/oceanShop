@@ -23,6 +23,8 @@
     "react-scripts": "5.0.0",
     "react-simple-image-slider": "^2.3.0",
     "react-slick": "^0.28.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.2"
   },

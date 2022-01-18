@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./MenClothing.css";
 import Header from "../../Components/Header/Header";
@@ -12,23 +12,23 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Rating from "@mui/material/Rating";
 import Footer from "../Footer/Footer";
 import Tooltip from "@mui/material/Tooltip";
-import Loader from "../../Store/Loader/loader";
-import { mensClothingItems } from "../../Store/Action/ProductAction";
+// import Loader from "../../Redux/loader";
+import { menClothingItems } from "../../redux/actions/mensClothingActions";
 
 function MenClothing() {
-  const [menClothes, setmenClothes] = useState([]);
   const dispatch = useDispatch();
-  const {itemsList} = useSelector((store)=>store); 
- console.log(itemsList);
+  const {products} = useSelector((store)=>store.products); 
+  console.log(products);
   useEffect(() => {
-    dispatch(mensClothingItems());
+    dispatch(menClothingItems());
   }, [dispatch]);
+
   return (
     <div className="menClothes__category">
       <Header />
       <div className="menClothes__Items">
-        {menClothes &&
-          menClothes.map((data) => {
+        {products &&
+          products.map((data) => {
             return (
               <>
                 <Card sx={{ maxWidth: 350 }} id="menClothes__card">
@@ -36,7 +36,7 @@ function MenClothing() {
                     id="menClothesImage"
                     component="img"
                     height="140"
-                    image={data.image}
+                    image={data.image} 
                     alt=""
                   />
                   <CardContent>
@@ -74,11 +74,11 @@ function MenClothing() {
               </>
             );
           })}
-        {!menClothes && !menClothes.length === 0 ? (
+        {/* {!menClothes && !menClothes.length === 0 ? (
           <div>loading...</div>
         ) : (
           <Loader />
-        )}
+        )} */}
       </div>
       <div className="home__row">
         <Footer />
