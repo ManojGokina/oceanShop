@@ -8,8 +8,8 @@ const initialState = {
     womensProductsList:[],
     loading:false,
     message: "No products Found!",
-}
-console.log(initialState);
+};
+
 export const womenClothesReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case GET_WOMENS_PRODUCTS:

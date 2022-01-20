@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
+import { Link } from "react-router-dom";
 import "./MenClothing.css";
 import Header from "../../Components/Header/Header";
 import Card from "@mui/material/Card";
@@ -40,6 +41,7 @@ function MenClothing() {
                     alt=""
                   />
                   <CardContent>
+                  <Link to={`/productDetails/${data.id}`} id="link">
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -48,6 +50,7 @@ function MenClothing() {
                     >
                       {data.title}
                     </Typography>
+                    </Link>
                     <Typography gutterBottom variant="h5" component="div">
                       ${data.price}
                     </Typography>

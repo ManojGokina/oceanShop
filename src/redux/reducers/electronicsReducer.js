@@ -8,8 +8,8 @@ const initialState = {
     ElectronicsList:[],
     loading:false,
     message: "No products Found!",
-}
-console.log(initialState);
+};
+
 export const electronicsReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case GET_ELECTRONICS_PRODUCTS:

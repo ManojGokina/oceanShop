@@ -1,29 +1,30 @@
 import {
-    GET_JEWELERY_PRODUCTS,
-    GET_JEWELERY_PRODUCTS_SUCCESS,
-    GET_JEWELERY_PRODUCTS_FAILED
-} from '../constants/JeweleryTypes';
+    GET_PRODUCT_DETAILS,
+    GET_PRODUCT_DETAILS_SUCCESS,
+    GET_PRODUCT_DETAILS_FAILURE
+} from '../constants/productDetailsType';
 
 const initialState = {
-    JeweleryList:[],
+    productDescription:{},
     loading:false,
-    message: "No products Found!",
+    message: "Error!",
 };
 
-export const jeweleryReducer = (state = initialState, { type, payload }) => {
+export const productDetailsReducer = (state = initialState, { type, payload }) => {
+  console.log(payload)
     switch (type) {
-      case GET_JEWELERY_PRODUCTS:
+      case GET_PRODUCT_DETAILS:
         return {
           ...state,
           loading: true,
         }
-      case GET_JEWELERY_PRODUCTS_SUCCESS:
+      case GET_PRODUCT_DETAILS_SUCCESS:
         return {
           ...state,
-          JeweleryList: payload,
+          productDescription: payload,
           loading: false,
         }
-      case GET_JEWELERY_PRODUCTS_FAILED:
+      case GET_PRODUCT_DETAILS_FAILURE:
         return {
           ...state,
           loading: false,

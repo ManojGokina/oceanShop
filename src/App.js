@@ -7,7 +7,8 @@ import Electronics from "./Components/Electronics/Electronics";
 import Jewelery from './Components/Jwellery/Jwellery';
 import MenClothing from './Components/MenClothing/MenClothing';
 import WomenClothing from './Components/WomenClothing/WomenClothing'
-import Mobiles from './Components/Mobiles/Mobiles'
+import Mobiles from './Components/Mobiles/Mobiles';
+import ProductDetails from './Components/ProductDetails/productDetails'
 
 function App() {
    return (
@@ -26,8 +27,10 @@ function App() {
          <Route exact path="/MenClothing" element={<MenClothing/>}></Route>
       {/* Women Clothing */}
          <Route exact path="/womenClothing" element={<WomenClothing/>}></Route>
-          {/* Women Clothing */}
-          <Route exact path="/mobiles" element={<Mobiles/>}></Route>
+      {/* Mobiles */}
+         <Route exact path="/mobiles" element={<Mobiles/>}></Route>
+      {/* Product Details */}
+         <Route exact path="/productDetails/:id" element={<ProductDetails/>}></Route>
        </Routes>
     </Router>
     </div>

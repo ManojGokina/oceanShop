@@ -10,6 +10,13 @@
     margin-top: 20px;
 
 }
+#link{
+    text-decoration: none;
+    color:black;
+}
+.womens_clothing_container{
+    width: 100%;
+}
 #womenClothes__card{
     margin: 20px;
     overflow: hidden;
