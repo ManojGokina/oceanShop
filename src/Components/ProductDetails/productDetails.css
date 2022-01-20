@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-evenly;
     padding: 40px;
-    background-color: white
+    background-color: white;
+    height:70vh;
+    align-items: center;
 }
 #productDesc_Image{
     height: 350px;

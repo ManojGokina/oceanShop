@@ -31,7 +31,9 @@ function ProductDetails() {
         </div>
         <div className="description">
           <h1 className="product_title">{title}</h1>
-          <p className="product_price">${price}</p>
+          <p className="product_price"> 
+          ${price}
+          </p>
           <p>
             {rate && 
             <Rating name="half-rating" defaultValue={rate} precision={0.5} />
