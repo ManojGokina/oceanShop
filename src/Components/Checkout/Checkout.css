@@ -86,3 +86,12 @@
 .remove_button{
     margin-top:20px;
 }
+.cart_item_details{
+    width: 30%;
+}
+
+.divLine{
+    height: 1px;
+    background-color: #e3e3e3;
+    margin-top: 6px;
+}
