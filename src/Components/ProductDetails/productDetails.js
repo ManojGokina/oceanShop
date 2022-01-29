@@ -8,14 +8,13 @@ import Rating from "@mui/material/Rating";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { productDetails } from "../../redux/actions/productDetailsAction";
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Stack from "@mui/material/Stack";
 
 function ProductDetails() {
   const dispatch = useDispatch();
-  const [showElement,setShowElement] = useState(false)
+  const [showElement, setShowElement] = useState(false);
   const { productDescription } = useSelector(
     (store) => store.productDescription
   );
@@ -26,24 +25,24 @@ function ProductDetails() {
   console.log(productDescription);
 
   const addToCart = () => {
-    const addedItems =  localStorage.getItem("productDesc")?JSON.parse(localStorage.getItem("productDesc")):null;
+    const addedItems = localStorage.getItem("productDesc")
+      ? JSON.parse(localStorage.getItem("productDesc"))
+      : null;
     let cartItemsList;
-    if (addedItems === null){
-       cartItemsList = []
-    }else{
+    if (addedItems === null) {
+      cartItemsList = [];
+    } else {
       cartItemsList = addedItems;
     }
     cartItemsList.push(productDescription);
 
     localStorage.setItem("productDesc", JSON.stringify(cartItemsList));
     setShowElement(true);
-  }; 
-   
-  
-   
-  setTimeout(function() {
-    setShowElement(false)
-       }, 3000);
+  };
+
+  setTimeout(function () {
+    setShowElement(false);
+  }, 3000);
 
   useEffect(() => {
     dispatch(productDetails(id));
@@ -82,21 +81,20 @@ function ProductDetails() {
             </button>
           </div>
           <div className="alert">
-          {
-            showElement?
-            <Stack sx={{ width: "100%" }} spacing={2}>
-            <Alert severity="success">
-              <AlertTitle>Success</AlertTitle>
-              Item added to cart — <strong>check it out!</strong>
-            </Alert>
-          </Stack>
-          :<></>
-          }
+            {showElement ? (
+              <Stack sx={{ width: "100%" }} spacing={2}>
+                <Alert severity="success">
+                  <AlertTitle>Success</AlertTitle>
+                  Item added to cart — <strong>check it out!</strong>
+                </Alert>
+              </Stack>
+            ) : (
+              <></>
+            )}
           </div>
-
         </div>
       </div>
-      <div>
+      <div className="home__row">
         <Footer />
       </div>
     </div>

@@ -1,0 +1,33 @@
+.payment_title{
+    text-align: center;
+    margin-top: 30px;
+}
+#payment_method{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+}
+.payment_option{
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    flex-direction: column;
+}
+.paymentContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#payCard{
+    justify-self: center;
+    justify-content: center;
+    margin-top: 30px;
+    box-shadow: 8px 7px 8px grey;
+}
+#pay{
+    background-color: lightseagreen;
+    box-shadow: 3px 5px 1px skyblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

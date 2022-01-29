@@ -17,6 +17,8 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
+  const totalItems = cartItem ? cartItem.length : 0;
   return (
     <div className="header">
       <Link to="/" className="home__route">
@@ -34,10 +36,12 @@ function Header() {
       </div>
 
       <div className="header_nav">
-        <div className="header_option">
-          <span className="header_optionUp">Hello,there</span>
-          <span className="header_optionDown">Sign In</span>
-        </div>
+        <Link to="/login" id="login_link">
+          <div className="header_option">
+            <span className="header_optionUp">Hello,there</span>
+            <span className="header_optionDown">Sign In</span>
+          </div>
+        </Link>
         <div className="header_option">
           <span className="header_optionUp">Returns</span>
           <span className="header_optionDown">& Orders</span>
@@ -76,7 +80,7 @@ function Header() {
             <MenuItem>T-Shirts and Casual Shirts</MenuItem>
             <MenuItem>Laptops</MenuItem>
             <MenuItem>
-            <Link to="/mobiles" id="dropDowm">
+              <Link to="/mobiles" id="dropDowm">
                 Mobiles
               </Link>
             </MenuItem>
@@ -102,7 +106,12 @@ function Header() {
       <Link to="/checkOut" className="checkout__route">
         <div className="header__optionBasket">
           <ShoppingCartIcon />
-          <span className="header_optionDown header__basketCount">0</span>
+          <span
+            className="header_optionDown header__basketCount"
+            id="totalCartItems"
+          >
+            {totalItems}
+          </span>
         </div>
       </Link>
     </div>

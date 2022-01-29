@@ -10,6 +10,9 @@ import WomenClothing from "./Components/WomenClothing/WomenClothing";
 import Mobiles from "./Components/Mobiles/Mobiles";
 import ProductDetails from "./Components/ProductDetails/productDetails";
 import Login from "./Components/Login/login";
+import Address from "./Components/Adress/adress";
+import Payment from "./Components/payment/payment";
+
 
 function App() {
   return (
@@ -42,6 +45,10 @@ function App() {
             path="/productDetails/:id"
             element={<ProductDetails />}
           ></Route>
+          {/* Add Adress */}
+          <Route exact path="/add-address" element={<Address />}></Route>
+           {/* Payment Page */}
+           <Route exact path="/payment" element={<Payment />}></Route>
         </Routes>
       </Router>
     </div>

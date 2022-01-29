@@ -82,6 +82,7 @@
     padding: 7px;
     border: none;
     color: white;
+    cursor: pointer;
 }
 .remove_button{
     margin-top:20px;

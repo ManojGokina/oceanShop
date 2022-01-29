@@ -1,15 +1,23 @@
 import React from "react";
 import "./Checkout.css";
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
 function Subtotal() {
+  const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
+  const totalItems = cartItem.length;
+
+  const totalPrice = cartItem.reduce((total, item) => {
+    return total + item.price;
+  }, 0);
+
   return (
     <div className="subtotal">
       <CurrencyFormat
         renderText={(value) => (
           <>
             <h2 id="subTotal">
-              Subtotal (0 Items) :<strong>0</strong>
+              Subtotal ({totalItems} Items) : <strong>${totalPrice}</strong>
             </h2>
             <small className="subtotal__discount">
               <input type="checkbox" className="checkbox" />
@@ -24,7 +32,9 @@ function Subtotal() {
         prefix={"$"}
       />
 
-      <button className="checkout__button">Proceed to Checkout</button>
+      <button className="checkout__button">
+        <Link to="/add-address">Proceed to Checkout </Link>
+      </button>
     </div>
   );
 }
