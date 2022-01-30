@@ -1,8 +1,72 @@
-.login_container{
-    margin-top: 100px;
-    background-color: white;
-    box-shadow: 8px 9px 4px grey;
+#login_container{
+    width: 50%;
+    margin-top: 7%;
+    margin-left: 25%;
+    display: flex;
+    justify-content: space-between;
 }
+
 .ocean_login{
-    color: skyblue;
+    color: #236c6c;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+#login_box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+#cardContent{
+    width: 100%;
+}
+label{
+    font-size: 20px;
+    color: gray;
+}
+
+.login__input{
+   padding: 5px;
+}
+#login_box-button-container{
+    margin-top: 10px;
+    width: 100%;
+}
+#login_box-button{
+    background-color: #08664c;
+    width: 100%;
+}
+.login__line{
+    height: 1px;
+    background-color: darkgrey;
+    margin-top: 10px;
+
+}
+.other__login__options{
+    text-align: center;
+}
+#other__login{
+    font-weight: 500;
+    color: grey;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.google_login{
+    /* width: 100%; */
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.signup__div{
+    display: flex;
+   flex-direction: column;
+    margin-top: 20px;
+}
+.signup{
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+.forgot__password{
+    color: grey;
+    cursor: pointer;
 }
