@@ -24,7 +24,9 @@ label{
     font-size: 20px;
     color: gray;
 }
-
+#login_image{
+    margin-left: 38px;
+}
 .login__input{
    padding: 5px;
 }
@@ -69,4 +71,8 @@ label{
 .forgot__password{
     color: grey;
     cursor: pointer;
+}
+#emailErr{
+    color: red;
+    font-size: 11px;
 }

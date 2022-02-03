@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./adress.css";
 import Header from "../../Components/Header/Header";
 import Button from "@mui/material/Button";
@@ -13,12 +14,22 @@ import Modal from "react-modal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
 
 function Address() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const [user] = useAuthState(auth);
+  const email = user.email;
+  console.log(email);
+  if(email === null){
+    navigate('/');
+  }
+
 
   const adressDetails = JSON.parse(window.localStorage.getItem("values"));
   console.log(adressDetails);

@@ -2,6 +2,8 @@ import React from "react";
 import "./Checkout.css";
 import CurrencyFormat from "react-currency-format";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
 function Subtotal() {
   const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
@@ -10,6 +12,8 @@ function Subtotal() {
   const totalPrice = cartItem.reduce((total, item) => {
     return total + item.price;
   }, 0);
+
+  const [user] = useAuthState(auth);
 
   return (
     <div className="subtotal">
@@ -31,10 +35,15 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-
-      <button className="checkout__button">
-        <Link to="/add-address">Proceed to Checkout </Link>
-      </button>
+      {user && user.email ? (
+        <button className="checkout__button">
+          <Link to="/add-address">Proceed to Checkout </Link>{" "}
+        </button>
+      ) : (
+        <button className="checkout__button">
+          <Link to="/logIn">Login to Checkout</Link>{" "}
+        </button>
+      )}
     </div>
   );
 }

@@ -5,11 +5,19 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AnchorRoundedIcon from "@mui/icons-material/AnchorRounded";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+import {signOut} from 'firebase/auth';
+
+
 
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [user] = useAuthState(auth);
+  console.log(user);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -17,6 +25,10 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logOut=()=> signOut(auth);
+
+
   const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
   const totalItems = cartItem ? cartItem.length : 0;
   return (
@@ -36,12 +48,29 @@ function Header() {
       </div>
 
       <div className="header_nav">
-        <Link to="/login" id="login_link">
+       
           <div className="header_option">
-            <span className="header_optionUp">Hello,there</span>
-            <span className="header_optionDown">Sign In</span>
+            {user && user.email ? (
+               <div>
+               <Button
+                 onClick={logOut}
+                 id="profileButton"
+               >
+                 <AccountCircleRoundedIcon style={{ fontSize: "35px", color:"white" }}  />
+               </Button>
+               
+             </div>
+             
+            ) : (
+              <Link to="/login" id="login_link">
+              <div className="header_option">
+                <span className="header_optionUp">Hello,there</span>
+                <span className="header_optionDown">Sign In</span>
+              </div>
+              </Link>
+            )}
           </div>
-        </Link>
+       
         <div className="header_option">
           <span className="header_optionUp">Returns</span>
           <span className="header_optionDown">& Orders</span>

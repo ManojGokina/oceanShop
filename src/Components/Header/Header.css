@@ -19,6 +19,9 @@
   color: white;
   font-size: 25px;
 }
+#profileButton{
+  padding: 2px;
+}
 .header_search {
   display: flex;
   flex: 1;

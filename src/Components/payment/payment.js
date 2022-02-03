@@ -13,6 +13,56 @@ import FormControl from "@mui/material/FormControl";
 import { Button } from "@mui/material";
 
 function Payment() {
+  const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
+  const totalPrice = cartItem.reduce((total, item) => {
+    return total + item.price;
+  }, 0);
+   console.log(totalPrice);
+
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+
+      script.onload = () => {
+        resolve(true);
+      };
+
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+  const displayRazorPay = async (amount) => {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    console.log(res);
+    if (!res) {
+      alert("You are Offline , please check your network connection");
+      return
+    }
+
+    const options = {
+      key: 'rzp_test_C7nrK4prJGokcz',
+      currency:"INR",
+      amount : (amount * 75) * 100,
+      name: "Manoj Gokina", 
+      description:"Thanks for purchasing",
+
+      handler:function(response){
+        alert(response.razorpay_payment_id)
+        alert("Payment done Successfully")
+      },
+      prefill:{
+        name:"Manoj Gokina"
+      }
+    };
+   const paymentObject = new window.Razorpay(options);
+   paymentObject.open()
+  };
   return (
     <div>
       <Header />
@@ -83,7 +133,13 @@ function Payment() {
             </RadioGroup>
           </FormControl>
 
-          <Button variant="contained" id="pay">Proceed to Pay</Button>
+          <Button
+            variant="contained"
+            id="pay"
+            onClick={() => displayRazorPay(totalPrice)}
+          >
+            Proceed to Pay
+          </Button>
         </div>
       </div>
       <div className="home__row">

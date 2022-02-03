@@ -12,14 +12,13 @@ import ProductDetails from "./Components/ProductDetails/productDetails";
 import Login from "./Components/Login/login";
 import Address from "./Components/Adress/adress";
 import Payment from "./Components/payment/payment";
-import { UserAuthContextProvider } from "./context/userAuthContext";
+// import ProtectedRoutes from "./Utilts/ProtectedRoutes";
 
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <UserAuthContextProvider>
         <Routes>
           {/* Login Page */}
           <Route exact path="/login" element={<Login />}></Route>
@@ -47,12 +46,13 @@ function App() {
             path="/productDetails/:id"
             element={<ProductDetails />}
           ></Route>
-          {/* Add Adress */}
+          {/* <Route element={<ProtectedRoutes/>}> */}
+           {/* Add Adress */}
           <Route exact path="/add-address" element={<Address />}></Route>
            {/* Payment Page */}
            <Route exact path="/payment" element={<Payment />}></Route>
+          {/* </Route> */}
         </Routes>
-        </UserAuthContextProvider>
       </Router>
     </div>
   );

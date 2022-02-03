@@ -4,6 +4,7 @@ import Subtotal from "./Subtotal";
 import Footer from "../Footer/Footer";
 import Header from "../../Components/Header/Header";
 
+
 function Checkout() {
   const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
   console.log(cartItem);

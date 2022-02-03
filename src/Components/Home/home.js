@@ -9,8 +9,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
-
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 const images = [
   {
@@ -32,10 +36,23 @@ const images = [
     url: "https://i.pinimg.com/originals/fd/0c/84/fd0c84b99f9e6c21e67773552794e8fb.jpg",
   },
 ];
+
 function Home() {
+
+  const [user] = useAuthState(auth);
+
   return (
     <div>
       <Header />
+      {user && user.email ? (
+        <Stack sx={{ width: '100%' }} spacing={2} >
+           <Alert severity="success">
+        <AlertTitle>Success</AlertTitle>
+        <strong>Logged In</strong>-sucessfully
+      </Alert>
+        </Stack>
+       
+      ): null}
       <div className="home">
         <div className="home__container">
           <SimpleImageSlider
