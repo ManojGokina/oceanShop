@@ -12,6 +12,7 @@ import ProductDetails from "./Components/ProductDetails/productDetails";
 import Login from "./Components/Login/login";
 import Address from "./Components/Adress/adress";
 import Payment from "./Components/payment/payment";
+import YourOrders from "./Components/Your Orders/YourOrders";
 // import ProtectedRoutes from "./Utilts/ProtectedRoutes";
 
 
@@ -24,6 +25,9 @@ function App() {
           <Route exact path="/login" element={<Login />}></Route>
           {/* Home Page */}
           <Route exact path="/" element={<Home />}></Route>
+          {/* Orders Page */}
+          <Route exact path="/yourOrders" element={<YourOrders />}></Route>
+          
           {/* CheckOut Page */}
           <Route exact path="/checkOut" element={<Checkout />}></Route>
           {/* Electronics Category Page */}

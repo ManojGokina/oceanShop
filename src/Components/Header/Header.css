@@ -49,6 +49,8 @@
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
+  text-decoration: none;
+  color: white;
 }
 .header_option:hover{
   color: rgb(194, 238, 241);

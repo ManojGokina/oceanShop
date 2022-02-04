@@ -37,7 +37,7 @@ function Checkout() {
             <h2 className="checkout__title">Your Selected Items</h2>
             <div className="cart_container">
               <div className="cart_items">
-                {cartData.map((item) => {
+                {cartData && cartData.map((item) => {
                   return (
                     <div className="cart_item" key={item.id}>
                       <div className="cart_image">

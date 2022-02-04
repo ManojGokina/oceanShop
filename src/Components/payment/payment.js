@@ -48,7 +48,7 @@ function Payment() {
     const options = {
       key: 'rzp_test_C7nrK4prJGokcz',
       currency:"INR",
-      amount : (amount * 75) * 100,
+      amount : totalPrice * 7500,
       name: "Manoj Gokina", 
       description:"Thanks for purchasing",
 

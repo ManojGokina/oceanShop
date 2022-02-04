@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AnchorRoundedIcon from "@mui/icons-material/AnchorRounded";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import Avatar from '@mui/material/Avatar';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -56,7 +56,7 @@ function Header() {
                  onClick={logOut}
                  id="profileButton"
                >
-                 <AccountCircleRoundedIcon style={{ fontSize: "35px", color:"white" }}  />
+                 <Avatar style={{ fontSize: "35px", color:"white" }} src={user.photoURL} alt="profilePhoto"/>
                </Button>
                
              </div>
@@ -71,10 +71,14 @@ function Header() {
             )}
           </div>
        
+          <Link to="/yourOrders">
         <div className="header_option">
-          <span className="header_optionUp">Returns</span>
+       
+         <span className="header_optionUp">Returns</span>
           <span className="header_optionDown">& Orders</span>
+        
         </div>
+        </Link>
         <div className="header_option">
           <span className="header_optionUp">Choose</span>
           <Button
