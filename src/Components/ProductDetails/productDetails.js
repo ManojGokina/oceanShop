@@ -46,7 +46,7 @@ function ProductDetails() {
 
   useEffect(() => {
     dispatch(productDetails(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <div>

@@ -38,7 +38,7 @@ function YourOrders() {
       setYourOrders(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getOrders();
-  }, []);
+  }, [ordersCollectionRef]);
   return (
     <div>
       <div className="checkout__header">
@@ -69,7 +69,7 @@ function YourOrders() {
                           <h1 className="ordered_products_title">{i.title}</h1>
                           <h3 className="id">Your Order Id:{order.id}</h3>
                           </div>
-                        <Button variant="filled" style={{backgroundColor:"#ff6565", color:"white" , height:"35px"}}>Cancel Order</Button>
+                        <Button onClick={addOrder} variant="filled" style={{backgroundColor:"#ff6565", color:"white" , height:"35px"}}>Cancel Order</Button>
                         </div>
                         <Divider id="divider"/>
                         </>
