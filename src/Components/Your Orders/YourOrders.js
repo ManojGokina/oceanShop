@@ -37,7 +37,7 @@ function YourOrders() {
       setYourOrders(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getOrders();
-  }, []);
+  }, [ordersCollectionRef]);
   return (
     <div>
       <div className="checkout__header">
@@ -52,7 +52,7 @@ function YourOrders() {
           <>
             <div className="ordered__item__container">
               {yourOrders && yourOrders.length === 0 ? (
-                <CircularProgress className="loader"/>
+                <CircularProgress className="orders_loader"/>
               ) : (
                 <>
                   {yourOrders?.map((order) => {
@@ -109,7 +109,7 @@ function YourOrders() {
           </>
         ) : (
           <>
-            <p>please login to see to your orders</p>
+            <p className="orders_message">Please login to see to your orders</p>
           </>
         )}
       </div>

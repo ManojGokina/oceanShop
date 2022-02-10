@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Product from "../products/Product";
 import SimpleImageSlider from "react-simple-image-slider";
 import "./home.css";
@@ -11,10 +11,10 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Stack from "@mui/material/Stack";
 
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
 
 const images = [
   {
@@ -38,21 +38,30 @@ const images = [
 ];
 
 function Home() {
-
   const [user] = useAuthState(auth);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (user?.email) {
+      setUserLoggedIn(true);
+    }
+  }, [user?.email]);
+
+  setTimeout(function () {
+    setUserLoggedIn(false);
+  }, 2000);
 
   return (
     <div>
       <Header />
-      {user && user.email ? (
-        <Stack sx={{ width: '100%' }} spacing={2} >
-           <Alert severity="success">
-        <AlertTitle>Success</AlertTitle>
-        <strong>Logged In</strong>-sucessfully
-      </Alert>
+      {userLoggedIn ? (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="success">
+            <AlertTitle>Success</AlertTitle>
+            <strong>Logged In</strong>-sucessfully
+          </Alert>
         </Stack>
-       
-      ): null}
+      ) : null}
       <div className="home">
         <div className="home__container">
           <SimpleImageSlider

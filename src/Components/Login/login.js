@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
 import Box from "@mui/material/Box";
@@ -9,10 +9,7 @@ import GoogleButton from "react-google-button";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { auth } from "../../firebase";
-import {
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 function Login() {
   let navigate = useNavigate();
@@ -39,27 +36,14 @@ function Login() {
             <CardContent sx={{ flex: "1 0 auto" }} id="cardContent">
               <Typography component="div" variant="h5" id="login_box">
                 <label>Username</label>
-                <input
-                  className="login__input"
-                  // onChange={(e) => setEmail(e.target.value)}
-                />
-                {/* {err && <p id="emailErr">{err.emailErr}</p>} */}
+                <input className="login__input" />
               </Typography>
               <Typography component="div" variant="h5" id="login_box">
                 <label>Password</label>
-                <input
-                  className="login__input"
-                  // onChange={(e) => setPassword(e.target.value)}
-                />
-                {/* {err && <p id="emailErr">{err.passwordErr}</p>} */}
+                <input className="login__input" />
               </Typography>
               <Typography component="div" id="login_box-button-container">
-                <Button
-                  variant="contained"
-                  id="login_box-button"
-                  type="submit"
-                  // onClick={() => login() }
-                >
+                <Button variant="contained" id="login_box-button" type="submit">
                   Log In{" "}
                 </Button>
               </Typography>
