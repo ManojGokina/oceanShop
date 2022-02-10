@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import './YourOrders.css'
+import "./YourOrders.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../Footer/Footer";
 import { db } from "../../firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 import { Button } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function YourOrders() {
   const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
@@ -16,11 +17,10 @@ function YourOrders() {
   }, 0);
 
   const [yourOrders, setYourOrders] = useState([]);
-  console.log(yourOrders);
   const ordersCollectionRef = collection(db, "Orders");
 
   const [user] = useAuthState(auth);
-  let userId = user.uid;
+  let userId = user?.uid;
 
   const addOrder = async () => {
     const orderData = {
@@ -28,7 +28,6 @@ function YourOrders() {
       items: cartItem,
       price: totalPrice,
     };
-    console.log(orderData);
     await addDoc(ordersCollectionRef, orderData);
   };
 
@@ -38,7 +37,7 @@ function YourOrders() {
       setYourOrders(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getOrders();
-  }, [ordersCollectionRef]);
+  }, []);
   return (
     <div>
       <div className="checkout__header">
@@ -49,36 +48,70 @@ function YourOrders() {
         <div className="order_header">
           <h1>Your Orders</h1>
         </div>
-        <div className="ordered__item__container">
-          {yourOrders &&
-            yourOrders.map((order) => {
-              return (
-                <div>
-                 <div className="order__details">
-                
-                 <h3>Order Placed By : {user.displayName}</h3>
-                 <h3>Total Price: ${order.price}</h3>
-                 </div>
-                  {order.items &&
-                    order.items.map((i) => {
+        {user && user.email ? (
+          <>
+            <div className="ordered__item__container">
+              {yourOrders && yourOrders.length === 0 ? (
+                <CircularProgress className="loader"/>
+              ) : (
+                <>
+                  {yourOrders?.map((order) => {
                       return (
-                          <>
-                        <div className="ordered_products">
-                          <img src={i.image} style={{height:"200px", width:"250px" , objectFit:"contain"}} alt="productImg"/>
-                          <div className="orderId">
-                          <h1 className="ordered_products_title">{i.title}</h1>
-                          <h3 className="id">Your Order Id:{order.id}</h3>
+                        <div>
+                          <div className="order__details">
+                            <h3>Order Placed By : {user.displayName}</h3>
+                            <h3>Total Price: ${order.price}</h3>
                           </div>
-                        <Button onClick={addOrder} variant="filled" style={{backgroundColor:"#ff6565", color:"white" , height:"35px"}}>Cancel Order</Button>
+                          {
+                            order?.items?.map((i) => {
+                              return (
+                                <>
+                                  <div className="ordered_products">
+                                    <img
+                                      src={i.image}
+                                      style={{
+                                        height: "200px",
+                                        width: "250px",
+                                        objectFit: "contain",
+                                      }}
+                                      alt="productImg"
+                                    />
+                                    <div className="orderId">
+                                      <h1 className="ordered_products_title">
+                                        {i.title}
+                                      </h1>
+                                      <h3 className="id">
+                                        Your Order Id:{order.id}
+                                      </h3>
+                                    </div>
+                                    <Button
+                                      onClick={addOrder}
+                                      variant="filled"
+                                      style={{
+                                        backgroundColor: "#ff6565",
+                                        color: "white",
+                                        height: "35px",
+                                      }}
+                                    >
+                                      Cancel Order
+                                    </Button>
+                                  </div>
+                                  <Divider id="divider" />
+                                </>
+                              );
+                            })}
                         </div>
-                        <Divider id="divider"/>
-                        </>
                       );
                     })}
-                </div>
-              );
-            })}
-        </div>
+                </>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <p>please login to see to your orders</p>
+          </>
+        )}
       </div>
 
       <div className="home__row">

@@ -11,11 +11,12 @@ import { productDetails } from "../../redux/actions/productDetailsAction";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Stack from "@mui/material/Stack";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function ProductDetails() {
   const dispatch = useDispatch();
   const [showElement, setShowElement] = useState(false);
-  const { productDescription } = useSelector(
+  const { productDescription , loading  } = useSelector(
     (store) => store.productDescription
   );
   const { image, title, price, description, rating } = productDescription;
@@ -52,6 +53,10 @@ function ProductDetails() {
     <div>
       <Header />
       <div className="desc-container">
+        {loading ? (
+          <CircularProgress/>
+        ):
+        <>
         <div className="image-container">
           <img src={image} alt="" id="productDesc_Image" />
         </div>
@@ -93,6 +98,9 @@ function ProductDetails() {
             )}
           </div>
         </div>
+        </>
+        }
+        
       </div>
       <div className="home__row">
         <Footer />

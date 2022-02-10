@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./MenClothing.css";
 import Header from "../../Components/Header/Header";
@@ -13,13 +13,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Rating from "@mui/material/Rating";
 import Footer from "../Footer/Footer";
 import Tooltip from "@mui/material/Tooltip";
-// import Loader from "../../Redux/loader";
+import CircularProgress from "@mui/material/CircularProgress";
 import { menClothingItems } from "../../redux/actions/mensClothingActions";
 
 function MenClothing() {
   const dispatch = useDispatch();
-  const {products} = useSelector((store)=>store.products); 
-  console.log(products);
+
+  const { products, loading } = useSelector((store) => store.products);
+
   useEffect(() => {
     dispatch(menClothingItems());
   }, [dispatch]);
@@ -28,60 +29,61 @@ function MenClothing() {
     <div className="menClothes__category">
       <Header />
       <div className="menClothes__Items">
-        {products &&
-          products.map((data) => {
-            return (
-              <>
-                <Card sx={{ maxWidth: 350 }} id="menClothes__card">
-                  <CardMedia
-                    id="menClothesImage"
-                    component="img"
-                    height="140"
-                    image={data.image} 
-                    alt=""
-                  />
-                  <CardContent>
-                  <Link to={`/productDetails/${data.id}`} id="link">
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      id="menClothes__title"
-                    >
-                      {data.title}
-                    </Typography>
-                    </Link>
-                    <Typography gutterBottom variant="h5" component="div">
-                      ${data.price}
-                    </Typography>
-
-                    <Typography gutterBottom variant="h5" component="div">
-                      <Rating
-                        name="half-rating"
-                        defaultValue={data.rating.rate}
-                        precision={0.5}
-                      />
-                    </Typography>
-                  </CardContent>
-                  <IconButton aria-label="add to favorites">
-                    <Tooltip title="Add to Wishlist">
-                      <FavoriteIcon id="favIcon" />
-                    </Tooltip>
-                  </IconButton>
-                  <IconButton aria-label="add to favorites">
-                    <Tooltip title="Add to Cart">
-                      <ShoppingCartIcon id="cartIcon" />
-                    </Tooltip>
-                  </IconButton>
-                </Card>
-              </>
-            );
-          })}
-        {/* {!menClothes && !menClothes.length === 0 ? (
-          <div>loading...</div>
+        {loading ? (
+          <CircularProgress className="loader" />
         ) : (
-          <Loader />
-        )} */}
+          <>
+            {products &&
+              products.map((data) => {
+                return (
+                  <>
+                    <Card sx={{ maxWidth: 350 }} id="menClothes__card">
+                      <CardMedia
+                        id="menClothesImage"
+                        component="img"
+                        height="140"
+                        image={data.image}
+                        alt=""
+                      />
+                      <CardContent>
+                        <Link to={`/productDetails/${data.id}`} id="link">
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            id="menClothes__title"
+                          >
+                            {data.title}
+                          </Typography>
+                        </Link>
+                        <Typography gutterBottom variant="h5" component="div">
+                          ${data.price}
+                        </Typography>
+
+                        <Typography gutterBottom variant="h5" component="div">
+                          <Rating
+                            name="half-rating"
+                            defaultValue={data.rating.rate}
+                            precision={0.5}
+                          />
+                        </Typography>
+                      </CardContent>
+                      <IconButton aria-label="add to favorites">
+                        <Tooltip title="Add to Wishlist">
+                          <FavoriteIcon id="favIcon" />
+                        </Tooltip>
+                      </IconButton>
+                      <IconButton aria-label="add to favorites">
+                        <Tooltip title="Add to Cart">
+                          <ShoppingCartIcon id="cartIcon" />
+                        </Tooltip>
+                      </IconButton>
+                    </Card>
+                  </>
+                );
+              })}
+          </>
+        )}
       </div>
       <div className="home__row">
         <Footer />

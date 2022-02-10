@@ -35,7 +35,7 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-      {user && user.email ? (
+      {user && user.email  ? (
         <button className="checkout__button">
           <Link to="/add-address">Proceed to Checkout </Link>{" "}
         </button>

@@ -13,12 +13,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Rating from "@mui/material/Rating";
 import Footer from "../Footer/Footer";
 import Tooltip from '@mui/material/Tooltip';
-import {jeweleryItems} from '../../redux/actions/jeweleryAction'
+import {jeweleryItems} from '../../redux/actions/jeweleryAction';
+import CircularProgress from "@mui/material/CircularProgress";
+
 
 function Jewelery() {
     
   const dispatch = useDispatch();
-  const { JeweleryList } = useSelector((store) => store.JeweleryList);
+  const { JeweleryList , loading} = useSelector((store) => store.JeweleryList);
   console.log(JeweleryList);
 
   useEffect(() => {
@@ -29,7 +31,11 @@ function Jewelery() {
     <div className="Jewelery">
       <Header />
       <div className="Jewelery__Items">
-      {JeweleryList.map((data) => {
+        {loading ?(
+          <CircularProgress className="loader"/>
+        ):
+        <>
+         {JeweleryList.map((data) => {
           return (
             <>
               <Card sx={{ maxWidth: 350 }} id="jewellery__card">
@@ -68,6 +74,9 @@ function Jewelery() {
             </>
           )
         })}
+        
+        </>}
+     
 
       </div>
       <div className="home__row">

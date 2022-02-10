@@ -37,30 +37,42 @@ function Checkout() {
             <h2 className="checkout__title">Your Selected Items</h2>
             <div className="cart_container">
               <div className="cart_items">
-                {cartData && cartData.map((item) => {
-                  return (
-                    <div className="cart_item" key={item.id}>
-                      <div className="cart_image">
-                        <img src={item.image} alt="" id="cart_img" />
-                      </div>
+                {cartData.length === 0 ? (
+                  <>
+                    <h1 className="cartItems__heading">
+                      {" "}
+                      Add items to your cart
+                    </h1>
+                  </>
+                ) : (
+                  <>
+                    {cartData &&
+                      cartData.map((item) => {
+                        return (
+                          <div className="cart_item" key={item.id}>
+                            <div className="cart_image">
+                              <img src={item.image} alt="" id="cart_img" />
+                            </div>
 
-                      <div className="cart_item_details">
-                        <h4>{item.title}</h4>
-                        <div className="cart_price">
-                          <div className="item_price">${item.price}</div>
-                        </div>
-                        <div className="remove_button">
-                          <button
-                            id="remove_button"
-                            onClick={() => removeCartItem(item.id)}
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                            <div className="cart_item_details">
+                              <h4>{item.title}</h4>
+                              <div className="cart_price">
+                                <div className="item_price">${item.price}</div>
+                              </div>
+                              <div className="remove_button">
+                                <button
+                                  id="remove_button"
+                                  onClick={() => removeCartItem(item.id)}
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </>
+                )}
               </div>
 
               <div className="divLine"></div>

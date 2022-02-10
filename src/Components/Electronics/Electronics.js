@@ -14,10 +14,13 @@ import Rating from "@mui/material/Rating";
 import Footer from "../Footer/Footer";
 import Tooltip from "@mui/material/Tooltip";
 import { electronicsItems } from "../../redux/actions/electronicsAction";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Electronics() {
   const dispatch = useDispatch();
-  const { ElectronicsList } = useSelector((store) => store.ElectronicsList);
+  const { ElectronicsList, loading } = useSelector(
+    (store) => store.ElectronicsList
+  );
   useEffect(() => {
     dispatch(electronicsItems());
   }, [dispatch]);
@@ -26,54 +29,60 @@ function Electronics() {
     <div className="electronics__category">
       <Header />
       <div className="electronics__Items">
-        {ElectronicsList.map((data) => {
-          return (
-            <Link to={`/productDetails/${data.id}`} id="link">
-              <Card sx={{ maxWidth: 350 }} id="gadjets__card" key={data.id}>
-                <CardMedia
-                  id="electronicsImage"
-                  component="img"
-                  height="140" 
-                  image={data.image}
-                  alt=""
-                />
-
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    id="electronics__title"
-                  >
-                    {data.title}
-                  </Typography>
-
-                  <Typography gutterBottom variant="h5" component="div">
-                    ${data.price}
-                  </Typography>
-
-                  <Typography gutterBottom variant="h5" component="div">
-                    <Rating
-                      name="half-rating"
-                      defaultValue={data.rating.rate}
-                      precision={0.5}
+        {loading ? (
+          <CircularProgress  className="loader"/>
+        ) : (
+          <>
+            {ElectronicsList.map((data) => {
+              return (
+                <Link to={`/productDetails/${data.id}`} id="link">
+                  <Card sx={{ maxWidth: 350 }} id="gadjets__card" key={data.id}>
+                    <CardMedia
+                      id="electronicsImage"
+                      component="img"
+                      height="140"
+                      image={data.image}
+                      alt=""
                     />
-                  </Typography>
-                </CardContent>
-                <IconButton aria-label="add to favorites">
-                  <Tooltip title="Add to Wishlist">
-                    <FavoriteIcon id="favIcon" />
-                  </Tooltip>
-                </IconButton>
-                <IconButton aria-label="add to favorites">
-                  <Tooltip title="Add to Cart">
-                    <ShoppingCartIcon id="cartIcon" />
-                  </Tooltip>
-                </IconButton>
-              </Card>
-            </Link>
-          );
-        })}
+
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        id="electronics__title"
+                      >
+                        {data.title}
+                      </Typography>
+
+                      <Typography gutterBottom variant="h5" component="div">
+                        ${data.price}
+                      </Typography>
+
+                      <Typography gutterBottom variant="h5" component="div">
+                        <Rating
+                          name="half-rating"
+                          defaultValue={data.rating.rate}
+                          precision={0.5}
+                        />
+                      </Typography>
+                    </CardContent>
+                    <IconButton aria-label="add to favorites">
+                      <Tooltip title="Add to Wishlist">
+                        <FavoriteIcon id="favIcon" />
+                      </Tooltip>
+                    </IconButton>
+                    <IconButton aria-label="add to favorites">
+                      <Tooltip title="Add to Cart">
+                        <ShoppingCartIcon id="cartIcon" />
+                      </Tooltip>
+                    </IconButton>
+                  </Card>
+                </Link>
+              );
+            })}
+          </>
+        )}
       </div>
       <div className="home__row">
         <Footer />
