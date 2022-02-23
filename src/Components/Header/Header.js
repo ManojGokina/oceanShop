@@ -17,7 +17,6 @@ import {signOut} from 'firebase/auth';
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [user] = useAuthState(auth);
-  console.log(user);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

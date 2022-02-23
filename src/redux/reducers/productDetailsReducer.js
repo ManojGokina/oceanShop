@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export const productDetailsReducer = (state = initialState, { type, payload }) => {
-  console.log(payload)
     switch (type) {
       case GET_PRODUCT_DETAILS:
         return {

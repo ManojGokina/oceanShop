@@ -19,7 +19,6 @@ function AddressDetails() {
 
   let name, value;
   const inputValue = (e) => {
-    console.log(e);
     name = e.target.name;
     value = e.target.value;
 

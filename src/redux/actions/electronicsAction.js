@@ -8,12 +8,10 @@ import {
   
   export const electronicsItems = () => (dispatch) => {
     const API_URL = `${BASE_URL}/products/category/electronics`;
-    console.log(API_URL);
     dispatch({ type: GET_ELECTRONICS_PRODUCTS });
     fetch(API_URL)
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         dispatch({ type: GET_ELECTRONICS_PRODUCTS_SUCCESS, payload: responseJson });
       })
       .catch((err) => dispatch({ type: GET_ELECTRONICS_PRODUCTS_FAILED, payload: err }));

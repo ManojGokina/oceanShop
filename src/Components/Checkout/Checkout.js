@@ -7,7 +7,6 @@ import Header from "../../Components/Header/Header";
 
 function Checkout() {
   const cartItem = JSON.parse(window.localStorage.getItem("productDesc"));
-  console.log(cartItem);
 
   const [cartData, setCartData] = useState(cartItem);
 

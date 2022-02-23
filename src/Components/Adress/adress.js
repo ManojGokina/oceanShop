@@ -25,14 +25,12 @@ function Address() {
 
   const [user] = useAuthState(auth);
   const email = user.email;
-  console.log(email);
   if(email === null){
     navigate('/');
   }
 
 
   const adressDetails = JSON.parse(window.localStorage.getItem("values"));
-  console.log(adressDetails);
 
   return (
     <div>

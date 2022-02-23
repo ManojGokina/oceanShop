@@ -17,7 +17,6 @@ function Payment() {
   const totalPrice = cartItem.reduce((total, item) => {
     return total + item.price;
   }, 0);
-   console.log(totalPrice);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -39,7 +38,6 @@ function Payment() {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
-    console.log(res);
     if (!res) {
       alert("You are Offline , please check your network connection");
       return

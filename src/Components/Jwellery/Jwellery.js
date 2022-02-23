@@ -21,7 +21,6 @@ function Jewelery() {
     
   const dispatch = useDispatch();
   const { JeweleryList , loading} = useSelector((store) => store.JeweleryList);
-  console.log(JeweleryList);
 
   useEffect(() => {
     dispatch(jeweleryItems());

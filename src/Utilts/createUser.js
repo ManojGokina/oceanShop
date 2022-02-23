@@ -34,7 +34,7 @@ createUserWithEmailAndPassword(auth, email, password)
 .then((userCredential) => {
   const user = userCredential.user;
   const userId = user.email;
-  console.log(user);
+  // console.log(user);
   console.log(userId);
   if(email=== null){
      alert('email required');

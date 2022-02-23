@@ -23,7 +23,7 @@ function ProductDetails() {
   const { rate } = rating ? rating : {};
   const { id } = useParams();
 
-  console.log(productDescription);
+
 
   const addToCart = () => {
     const addedItems = localStorage.getItem("productDesc")

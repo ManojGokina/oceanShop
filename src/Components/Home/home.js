@@ -23,9 +23,9 @@ const images = [
   {
     url: "https://www.dealsshutter.com/blog/wp-content/uploads/2020/10/diwali-sale-online.jpg",
   },
-  {
-    url: "https://social.manorhouse.in/assets/manor_house_decor_buy_gifts_home_decor_corporate_gifts_online_banner.jpg?version=2.2.15&subv=1.8",
-  },
+  // {
+  //   url: "https://social.manorhouse.in/assets/manor_house_decor_buy_gifts_home_decor_corporate_gifts_online_banner.jpg?version=2.2.15&subv=1.8",
+  // },
   {
     url: "https://s3.envato.com/files/201875733/BEE-1631-Fashion%20Sale%20Banners_01_Preview4.jpg",
   },

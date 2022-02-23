@@ -21,7 +21,6 @@ function WomenClothing() {
   const { womensProductsList, loading } = useSelector(
     (store) => store.womensProductsList
   );
-  console.log(womensProductsList);
 
   useEffect(() => {
     dispatch(womenClothingItems());
